@@ -84,6 +84,10 @@ impl ChaCha {
 			qr(3, 4,  9, 14);
 		}
 
+		for i in 0 .. 16 {
+			block[i] = block[i].wrapping_add(self.state[i]);
+		}
+
 		let mut ret = Vec::new();
 
 		for word in block {
